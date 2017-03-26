@@ -1,60 +1,9 @@
 <html>
 <head>
-	<title>A Leaflet map!</title>
+	<title>Home</title>
 	<script type="text/javascript" src="js/testclass.js"></script>
 </head>
 <body>
 	<input type="button" onclick="ishomepage()" value="click me">
 </html>
 
-
-
-
-
-
-<script th:inline="javascript" th:each="row : ${agentList}">
-
-var customIconMale = L.icon({
-	iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
-    iconSize:     [20, 30], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
-
-var customIconFemale = L.icon({
-	iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-    iconSize:     [20, 30], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
-
-var markerLocation2 = new L.LatLng([[${row.latitude}]],[[${row.longitude}]]);
-
-var gender = [[${row.gender}]];
-
-
-if(gender === "Male"){
-	L.marker(markerLocation2, {icon: customIconMale}).addTo(map).bindPopup('<dl><dt>Target: ' + [[${row.name}]] + '</dt><dt>Age: ' + [[${row.age}]] + '</dt></dl>' );
-}else{
-	L.marker(markerLocation2, {icon: customIconFemale}).addTo(map).bindPopup('<dl><dt>Target: ' + [[${row.name}]] + '</dt><dt>Age: ' + [[${row.age}]] + '</dt></dl>' );
-}
-
-
-
-</script>
-
-	<script th:inline="javascript"> 
- 
- var circleLocation = new L.LatLng(42.35, -71.08),
-             circleOptions = {
-                 color: 'red', 
-                 fillColor: '#f03', 
-                 fillOpacity: 0.5
-             };
-             
-      var circle = new L.Circle(circleLocation, 500, circleOptions);
-      map.addLayer(circle);
-     
-     circle.bindPopup("I am a circle.");
-
-  </script>
