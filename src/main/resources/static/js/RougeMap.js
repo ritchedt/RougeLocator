@@ -1,28 +1,27 @@
+function getGenderIcon(gender){
+	var url;
+	
+	if(gender === "Male")
+		url = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png';
+	else
+		url = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png';
+	
+	var genderIcon = L.icon({
+		iconUrl: url,
+		iconSize: [20, 30],
+		popupAnchor: [-3, -30]
+	});
+	
+	return genderIcon;
+}
+
 
 function locateRogueAgents(map, lat, long, agentGender, name, age){
 
-	var customIconMale = L.icon({
-		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
-		iconSize:     [20, 30],
-		popupAnchor:  [-3, -76]
-	});
+	var genderIcon = getGenderIcon(agentGender)
 
-	var customIconFemale = L.icon({
-		iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-		iconSize:     [20, 30],
-		popupAnchor:  [-3, -76]
-	});
-
-	var markerLocation2 = new L.LatLng(lat,long);
-
-	var gender = agentGender;
-
-
-	if(gender === "Male"){
-		L.marker(markerLocation2, {icon: customIconMale}).addTo(map).bindPopup('<dl><dt>Target: ' + name + '</dt><dt>Age: ' + age + '</dt></dl>' );
-	}else{
-		L.marker(markerLocation2, {icon: customIconFemale}).addTo(map).bindPopup('<dl><dt>Target: ' + name + '</dt><dt>Age: ' + age + '</dt></dl>' );
-	}
+	L.marker(new L.LatLng(lat,long), {icon: genderIcon}).addTo(map)
+		.bindPopup('<dl><dt>Target: ' + name + '</dt><dt>Age: ' + age + '</dt></dl>' );
 }
 
 
