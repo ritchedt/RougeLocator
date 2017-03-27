@@ -12,17 +12,18 @@ be circled when located! It's also mobile friendly!
 Execute
 -----------------------
 
-Download/clone repo and (unce unpackaged) run the command to assure a successful build:
+Download/clone repo and (unce unpackaged) run the command from the root of the project to assure a successful build:
 
 $ mvn clean package
 
 
-Afterwards, run the command:
+Afterwards, run the command from the root of the project:
 
 $ mvn spring-boot:run
 
 
 
+The index/home page is on the root directly (localhost:<port>)
 
 
 Author
