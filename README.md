@@ -23,7 +23,7 @@ $ mvn spring-boot:run
 
 
 
-The index/home page is on the root directly (localhost:<port>)
+The index/home page is on the root directly --> localhost:port
 
 
 Author
