@@ -25,7 +25,8 @@ function locateRogueAgent(map, lat, long, agentGender, name, age){
 	var genderIcon = getGenderIcon(agentGender)
 
 	L.marker(new L.LatLng(lat,long), {icon: genderIcon}).addTo(map)
-	.bindPopup('<dl><dt>Target: ' + name + '</dt><dt>Age: ' + age + '</dt></dl>' );
+	.bindPopup('<dl><dt>Target: ' + name + '</dt><dt>Age: ' + age + '</dt><dt>Latitude: ' + 
+			lat + '</dt><dt>Longitude: ' + long + '</dt></dl>' );
 }
 
 function mapContainer(){
