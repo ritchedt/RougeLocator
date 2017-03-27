@@ -1,0 +1,38 @@
+div.container {
+	width: 100%;
+	border: 1px solid gray;
+}
+
+div.headerSmall{
+	height: 12%; 
+	width: 100%;
+	background-color: #22DEEB;
+}
+
+div.headerLarge{
+	height: 90%; 
+	width: 100%;
+}
+
+header.index {
+	padding: 1em;
+	color: black;
+	background-color: #22DEEB;
+	clear: left;
+	text-align: center;
+}
+
+header.agentMap {
+	color: black;
+	background-color: #22DEEB;
+}
+
+article {
+	padding: 1em;
+	overflow: hidden;
+	background-color: #A074B7;
+}
+
+input {
+	display: inline-block;
+}

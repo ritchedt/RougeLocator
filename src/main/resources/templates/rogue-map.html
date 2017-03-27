@@ -1,0 +1,40 @@
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
+	<head>
+		<title>Location of Rogue Agents</title>
+		
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+		<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1"></meta>
+		
+		<script type="text/javascript" th:src="@{/js/RougeMap.js}"></script>
+		<link type="text/css" href="css/main.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="headerSmall">
+		<header class="agentMap">
+			<h3>Click on an icon for more detail</h3>
+			<input type="button" style="float: right;" onclick="location.href='/'" value="Home"/>
+		</header>
+		  <input type="text" id="agentName" placeholder="Find agent by name" />
+		  <input type="button" id="search" value="Submit" />
+		</div>
+		<div id="map" class="headerLarge">
+		</div>
+	</body>
+	
+	<script th:inline="javascript">
+		var map = mapContainer();
+		document.getElementById("search").addEventListener("click", function() {
+			var agentName = document.getElementById('agentName').value;
+			if(agentName.length > 0){
+				location.href='/agent-search?name=' + agentName;
+			}
+		}, false);
+	</script>
+	<script th:inline="javascript" th:each="agent : ${agentList}">
+		locateRogueAgent( map, [[${agent.latitude}]], [[${agent.longitude}]], 
+				[[${agent.gender}]], [[${agent.name}]], [[${agent.age}]] );
+	</script>
+</html>
