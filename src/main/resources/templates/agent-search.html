@@ -9,9 +9,18 @@
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1"></meta>
 		
 		<script type="text/javascript" th:src="@{/js/RougeMap.js}"></script>
+		<link type="text/css" href="css/main.css" rel="stylesheet" />
 	</head>
 	<body>
-		<div id="map" style="height: 90%; width: 100%;">
+		<div class="headerSmall">
+		<header class="agentMap">
+			<h3>Agent located! Click on an icon for more detail</h3>
+			<input type="button" style="float: right;" onclick="location.href='/rogue-map'" value="See all agents"/>
+		</header>
+		  <input type="text" id="agentName" placeholder="Find agent by name" />
+		  <input type="button" id="search" value="Submit" />
+		</div>
+		<div id="map" class="headerLarge">
 		</div>
 	</body>
 	<script th:inline="javascript">
@@ -20,5 +29,6 @@
 	<script th:inline="javascript" th:each="agent : ${agentList}">
 		locateRogueAgent( map, [[${agent.latitude}]], [[${agent.longitude}]], 
 				[[${agent.gender}]], [[${agent.name}]], [[${agent.age}]] );
+		locatedAgentCircledArea(map, [[${agent.latitude}]], [[${agent.longitude}]]);
 	</script>
 </html>
